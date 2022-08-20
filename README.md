@@ -1,4 +1,4 @@
-## Automated Non Functional Tests for Baykar's Career Site
+## Non Functional Test Automation for Baykar's Career Site
  ![JMeter](https://img.shields.io/badge/JMeter-000000?style=for-the-badge&logo=apache&logoColor=white)
  ![TEST-001-B](https://img.shields.io/badge/Test%20001%20B-000000?style=for-the-badge&logo=null&logoColor=white)
  <a href="https://github.com/Berkantyuks/QA-Project-Test-Classification-Mark" rel="tc-nf"><img width="79px" style="border-width: 0;" src="https://github.com/Berkantyuks/QA-Project-Test-Classification-Mark/blob/main/TCM-F-114x40/114x40-nf.png" alt="tc-nf" /></a>
