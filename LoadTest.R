@@ -29,6 +29,8 @@ current_time <- Sys.time()
 thr = 15
 loops = 100
 
+automation_tag <- paste0(test_url_formatted," (THR: ",thr,", LPS: ",loops,")")
+
 # Run loadtest
 results <- loadtest(url = test_url,
                     method = "GET",
@@ -45,7 +47,8 @@ head(results)
 ## Create pdf file by test results
 CreatePDF.LoadTest <- function(results)
 {
-  pdf(file= paste("results\\",current_date,"test_result.pdf"), width = 11, height = 9)
+  automation_tag_formatted <- str_remove_all(automation_tag, "[^A-Za-z0-9]+")
+  pdf(file= paste0("results\\",current_date,"test_result_",automation_tag_formatted,".pdf"), width = 11, height = 9)
   
   # create a 2X2 grid
   par( mfrow= c(2,2) )
@@ -76,7 +79,7 @@ CreatePDF.LoadTest <- function(results)
                                      size = 10),
                   left = paste(current_time),
                   right = paste(current_time),
-                  top = text_grob(paste0("\n Automated NF Test Results for ",test_url_formatted," (THR: ",thr,", LPS: ",loops,")","\n"), color = "black", face = "bold", size = 14))
+                  top = text_grob(paste0("\n Automated NF Test Results for ",automation_tag,"\n"), color = "black", face = "bold", size = 14))
   print(out)
   dev.off()
 }
