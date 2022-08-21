@@ -12,6 +12,9 @@ Sys.setenv("LOADTEST_JMETER_PATH"="C:\\apache-jmeter-5.5\\bin\\jmeter.bat")
 # Load loadtest library
 library(loadtest)
 library(ggpubr)
+library(ggplot2)
+library(grid)
+library(gridExtra)
 library(png)
 
 test_url <- c("https://kariyer.baykartech.com")
@@ -21,14 +24,16 @@ currentDate <- Sys.Date()
 # Run loadtest
 results <- loadtest(url = test_url,
                     method = "GET",
-                    threads = 5,
-                    loops = 30,
+                    threads = 7,
+                    loops = 10,
                     delay_per_request=100)
 
 # Print Results
 print(results)
 
-CreatePDF.LoadTest <- function()
+
+## Create pdf file by test results
+CreatePDF.LoadTest <- function(results)
 {
   pdf(file= paste("results\\",currentDate,"test_result.pdf"), width = 10, height = 8)
   
@@ -41,20 +46,30 @@ CreatePDF.LoadTest <- function()
   prt <- plot_requests_by_thread(results)
   prs <- plot_requests_per_second(results)
   
-  grid_graphs <- ggarrange(pet, peth, prt, prs,
+  ac <- annotation_custom(rasterGrob(test_mark, 
+                                     x = 1, 
+                                     y=0.85, 
+                                     hjust = 1, 
+                                     width= .12, 
+                                     interpolate=TRUE))
+  
+  grid_graphs <- ggarrange(pet + ac,
+                           peth + ac, 
+                           prt + ac, 
+                           prs + ac,
                            ncol = 2, nrow = 2)
   
-  annotate_figure(grid_graphs,
+  out <- annotate_figure(grid_graphs,
                   bottom = text_grob(paste(" Test Executed by: \n Berkant Yüksektepe \n"), color = "blue",
                                      hjust = 1, x = 1, face = "italic", size = 10),
                   left = paste(currentDate),
-                  right = test_mark,
+                  right = paste(currentDate),
                   top = text_grob(paste("Load Test: ", test_url, "\n"), color = "black", face = "bold", size = 14))
-  
+  print(out)
   dev.off()
 }
 
-CreatePDF.LoadTest()
+CreatePDF.LoadTest(results)
 
 
 # Generate HTML Report
