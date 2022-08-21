@@ -26,8 +26,8 @@ test_mark <- readPNG("img/tcnf-test-logo.png")
 current_date <- Sys.Date()
 current_time <- Sys.time()
 
-thr = 7
-loops = 10
+thr = 15
+loops = 100
 
 # Run loadtest
 results <- loadtest(url = test_url,
