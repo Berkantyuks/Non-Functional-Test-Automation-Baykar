@@ -16,10 +16,15 @@ library(ggplot2)
 library(grid)
 library(gridExtra)
 library(png)
+library(stringr)
+
+source("custom_plots/load_test_plots.R")
 
 test_url <- c("https://kariyer.baykartech.com")
+test_url_formatted <- str_replace(test_url, "https://","")
 test_mark <- readPNG("img/tcnf-test-logo.png")
-currentDate <- Sys.time()
+current_date <- Sys.Date()
+current_time <- Sys.time()
 
 thr = 7
 loops = 10
@@ -34,20 +39,22 @@ results <- loadtest(url = test_url,
 # Print Results
 print(results)
 
+head(results)
+
 
 ## Create pdf file by test results
 CreatePDF.LoadTest <- function(results)
 {
-  pdf(file= paste("results\\",currentDate,"test_result.pdf"), width = 11, height = 9)
+  pdf(file= paste("results\\",current_date,"test_result.pdf"), width = 11, height = 9)
   
   # create a 2X2 grid
   par( mfrow= c(2,2) )
   
-  # Plot Results
-  pet <- plot_elapsed_times(results)
-  peth <- plot_elapsed_times_histogram(results)
-  prt <- plot_requests_by_thread(results)
-  prs <- plot_requests_per_second(results)
+  # Plot Results - don't touch here
+  pet <- tc_plot_elapsed_times(results)
+  peth <- tc_plot_elapsed_times_histogram(results)
+  prt <- tc_plot_requests_by_thread(results)
+  prs <- tc_plot_requests_per_second(results)
   
   ac <- annotation_custom(rasterGrob(test_mark, 
                                      x = 1, 
@@ -63,11 +70,13 @@ CreatePDF.LoadTest <- function(results)
                            ncol = 2, nrow = 2)
   
   out <- annotate_figure(grid_graphs,
-                  bottom = text_grob(paste("This file auto generated and executed by: Berkant Yüksektepe. Test Class Non-Functional Used in plots. This page involves only load and performance tests, \n for more information please visit project repo: https://github.com/Berkantyuks/Non-Functional-Test-Automation-Baykar\n"), color = "red",
-                                    face = "italic", size = 10),
-                  left = paste(currentDate),
-                  right = paste(currentDate),
-                  top = text_grob(paste("\n Load Test: ",test_url," (THR: ",thr," LPS: ",loops,")","\n"), color = "black", face = "bold", size = 14))
+                  bottom = text_grob(paste("This file auto generated and executed by: Berkant Yüksektepe. Test Class Non-Functional Used in plots. This page involves only load and performance tests, \n for more information please visit project repo: https://github.com/Berkantyuks/Non-Functional-Test-Automation-Baykar\n"),
+                                     color = "black",
+                                     face = "italic", 
+                                     size = 10),
+                  left = paste(current_time),
+                  right = paste(current_time),
+                  top = text_grob(paste0("\n Automated NF Test Results for ",test_url_formatted," (THR: ",thr,", LPS: ",loops,")","\n"), color = "black", face = "bold", size = 14))
   print(out)
   dev.off()
 }
