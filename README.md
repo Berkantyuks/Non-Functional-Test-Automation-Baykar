@@ -16,7 +16,14 @@ Involves Non Functional, Load and Performance Tests with R and JMeter. This proj
 - R and (R Studio or CLI)
 - Required Libraries (in top of the LoadTest.R file)
 
-
+### Low Level Load Test
 ![image](https://user-images.githubusercontent.com/61010367/185801189-b83ac4e1-5581-4b64-b026-fce132b01ad0.png)
+
+### Medium Level Load Test
+![image](https://user-images.githubusercontent.com/61010367/185802842-b50edb8c-bcb8-45d6-911c-ddb37f593007.png)
+
+### High Level Load Test
+![image](https://user-images.githubusercontent.com/61010367/185803764-c23b60ad-1c2b-4d9f-844b-637cf497f645.png)
+
 
 
