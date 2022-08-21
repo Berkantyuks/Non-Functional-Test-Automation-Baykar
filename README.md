@@ -1,5 +1,5 @@
 ## Non Functional Test Automation for Baykar's Career Site
-<a href="" rel="mit"><img width="80px" style="border-width: 0;" src="https://github.com/Berkantyuks/Berkantyuks/blob/main/images/mit-license-custom.png" alt="mit" /></a>
+<a href="https://github.com/Berkantyuks/Non-Functional-Test-Automation-Baykar/blob/main/license" rel="mit"><img width="80px" style="border-width: 0;" src="https://github.com/Berkantyuks/Berkantyuks/blob/main/images/mit-license-custom.png" alt="mit" /></a>
  ![R](https://img.shields.io/badge/R-000000?style=for-the-badge&logo=r&logoColor=white)
  ![JMeter](https://img.shields.io/badge/JMeter-000000?style=for-the-badge&logo=apache&logoColor=white)
  ![TEST-001-B](https://img.shields.io/badge/Test%20001%20B-000000?style=for-the-badge&logo=null&logoColor=white)
