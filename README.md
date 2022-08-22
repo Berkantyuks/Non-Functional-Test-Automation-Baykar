@@ -31,11 +31,13 @@ Involves Non Functional, Load and Performance Tests with R and JMeter. This proj
 
 ### High Level Load Test
 10 Threads and 70 loops setting.
-[]
+![image](https://user-images.githubusercontent.com/61010367/185892687-3871f95e-68c7-4065-85d5-b070fac932c0.png)
+
 
 ### Extreme Level Load Test
 15 Threads and 100 loops setting.
-[]
+![image](https://user-images.githubusercontent.com/61010367/185901460-8bf10794-2ebf-474f-b8d8-d52297416460.png)
+
 
 
 
