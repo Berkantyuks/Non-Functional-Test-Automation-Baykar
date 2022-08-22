@@ -10,7 +10,7 @@ tc_plot_elapsed_times <- function (results)
          call. = FALSE)
   }
   ggplot2::ggplot(results, ggplot2::aes(x = time_since_start, 
-                                        y = elapsed, color = request_status)) + ggplot2::geom_point() + 
+                                        y = elapsed, color = request_status)) + ggplot2::geom_point() +
     ggplot2::labs(x = "Time since start (milliseconds)", 
                   y = "Time to complete request (milliseconds)", color = "Request status", 
                   title = "Time to complete request over duration of test", 

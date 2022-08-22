@@ -22,12 +22,12 @@ source("custom_plots/load_test_plots.R")
 
 test_url <- c("https://kariyer.baykartech.com")
 test_url_formatted <- str_replace(test_url, "https://","")
-test_mark <- readPNG("img/tcnf-test-logo.png")
+test_mark <- readPNG("img/tcnf-test-logo-TCBL.png")
 current_date <- Sys.Date()
 current_time <- Sys.time()
 
-thr = 15
-loops = 100
+thr = 8
+loops = 40
 
 automation_tag <- paste0(test_url_formatted," (THR: ",thr,", LPS: ",loops,")")
 
@@ -61,25 +61,28 @@ CreatePDF.LoadTest <- function(results)
   
   ac <- annotation_custom(rasterGrob(test_mark, 
                                      x = 1, 
-                                     y=0.89, 
+                                     y=0.88, 
                                      hjust = 1, 
-                                     width= .12, 
+                                     width= .17, 
                                      interpolate=TRUE))
   
-  grid_graphs <- ggarrange(pet + ac,
+  grid_graphs <- ggarrange(pet,
                            peth + ac, 
-                           prt + ac, 
-                           prs + ac,
+                           prt, 
+                           prs,
                            ncol = 2, nrow = 2)
   
+  
+  
   out <- annotate_figure(grid_graphs,
-                  bottom = text_grob(paste("This file auto generated and executed by: Berkant Yüksektepe. Test Class Non-Functional Used in plots. This page involves only load and performance tests, \n for more information please visit project repo: https://github.com/Berkantyuks/Non-Functional-Test-Automation-Baykar\n"),
+                  bottom = text_grob(paste("This file auto generated and executed by: Berkant Yüksektepe. Test Class Balance Used in plots. This page involves only load and performance tests, \n for more information please visit project repo: https://github.com/Berkantyuks/Non-Functional-Test-Automation-Baykar\n"),
                                      color = "black",
                                      face = "italic", 
                                      size = 10),
-                  left = paste(current_time),
-                  right = paste(current_time),
-                  top = text_grob(paste0("\n Automated NF Test Results for ",automation_tag,"\n"), color = "black", face = "bold", size = 14))
+                  left = paste(current_time, "BAYKAR"),
+                  right = paste(current_time, "BAYKAR"),
+                  top = text_grob(paste0("\n Automated NF Test Results for ",automation_tag,"\n"), color = "black", face = "bold", size = 14)) + grid.raster(test_mark, x=.1, y=.1, width=.25)
+  
   print(out)
   dev.off()
 }
