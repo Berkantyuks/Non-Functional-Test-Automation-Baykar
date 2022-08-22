@@ -22,20 +22,20 @@ Involves Non Functional, Load and Performance Tests with R and JMeter. This proj
 - Required Libraries (in top of the LoadTest.R file)
 
 ### Low Level Load Test
-7 Threads and 10 loops setting.
+7 Threads and 10 loops setting. See original export on <a href="/results/2022-08-22test_result_kariyerbaykartechcomTHR7LPS10.pdf">PDF (Load T7, L10)</a>
 ![image](https://user-images.githubusercontent.com/61010367/185816015-f8716735-a416-44d3-aba0-0a650b8864aa.png)
 
 ### Medium Level Load Test
-8 Threads and 40 loops setting.
+8 Threads and 40 loops setting. See original export on <a href="/results/2022-08-22test_result_kariyerbaykartechcomTHR8LPS40.pdf">PDF (Load T8, L40)</a>
 ![image](https://user-images.githubusercontent.com/61010367/185816152-51bd69a0-7ab1-4391-a02e-11319b7c2fc2.png)
 
 ### High Level Load Test
-10 Threads and 70 loops setting.
+10 Threads and 70 loops setting. See original export on <a href="/results/2022-08-22test_result_kariyerbaykartechcomTHR10LPS70.pdf">PDF (Load T10, L70)</a>
 ![image](https://user-images.githubusercontent.com/61010367/185892687-3871f95e-68c7-4065-85d5-b070fac932c0.png)
 
 
 ### Extreme Level Load Test
-15 Threads and 100 loops setting.
+15 Threads and 100 loops setting. See original export on <a href="/results/2022-08-22test_result_kariyerbaykartechcomTHR15LPS100.pdf">PDF (Load T15, L100)</a>
 ![image](https://user-images.githubusercontent.com/61010367/185901460-8bf10794-2ebf-474f-b8d8-d52297416460.png)
 
 
